@@ -39,4 +39,3 @@ popd
 # Create the embeddable dir and moves Python distribution into it
 mkdir -p embedabble
 mv build/usr/* embedabble
-ls -R
