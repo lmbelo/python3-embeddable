@@ -23,6 +23,7 @@ popd src
 # ----------------
 
 pushd $PY_SRC_DIR
+ls -l
 ls -R
 # Configure and make Python from source
 ./configure --prefix=/usr "$@" --enable-shared
