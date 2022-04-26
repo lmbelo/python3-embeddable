@@ -6,9 +6,12 @@ set -x
 # Install requirements
 brew install xz
 
-#Initialize variables
+# Initialize variables
 THIS_DIR="$PWD"
 PY_SRC_DIR=src/Python-$PYVER
+
+# Navigate to the target dir
+cd python3-macos
 
 # Create the Python source dir
 mkdir -p src
@@ -34,3 +37,4 @@ popd
 # Create the embeddable dir and moves Python distribution into it
 mkdir -p embedabble
 mv build/usr/* embedabble
+ls -R
