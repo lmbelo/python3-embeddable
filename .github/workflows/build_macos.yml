@@ -48,5 +48,5 @@ jobs:
     - name: Save build
       uses: actions/upload-artifact@v2
       with:
-        path: embedabble/${{ steps.create_package.outputs.package_filename }}
+        path: python3-macos/embedabble/${{ steps.create_package.outputs.package_filename }}
         if-no-files-found: error
