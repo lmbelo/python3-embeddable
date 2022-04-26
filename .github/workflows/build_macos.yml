@@ -15,13 +15,13 @@ jobs:
     strategy:
       matrix:
         env:
-          - { ARCH: x86_64, PYVER: 3.7.9 }
+          - { PYVER: 3.7.9 }
           
-          - { ARCH: x86_64, PYVER: 3.8.9 }
+          - { PYVER: 3.8.9 }
           
-          - { ARCH: x86_64, PYVER: 3.9.9 }
+          - { PYVER: 3.9.9 }
 
-          - { ARCH: x86_64, PYVER: 3.10.4 }
+          - { PYVER: 3.10.4 }
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v2
@@ -32,6 +32,9 @@ jobs:
       run: |
         # Make the script runnable
         chmod +x build.sh
+
+        # Set env parameters
+        PYVER=${{ matrix.env.PYVER }}
 
         # Run the build script
         ./build.sh
