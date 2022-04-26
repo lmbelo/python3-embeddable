@@ -3,6 +3,9 @@
 set -e
 set -x
 
+# Install requirements
+brew install xz
+
 # Create the Python source dir
 mkdir -p src
 pushd src
