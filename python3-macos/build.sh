@@ -30,3 +30,9 @@ make
 make install DESTDIR="$THIS_DIR/build"
 
 popd
+
+# Create the embeddable dir and moves Python distribution into it
+
+mkdir -p Python-$PYVER
+mv build/usr Python-$PYVER
+ls Python-$PYVER
