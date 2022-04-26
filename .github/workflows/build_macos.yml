@@ -28,3 +28,7 @@ jobs:
     - uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: '12.4'
+    - name: Build Python
+      run: |
+        # Make the script runnable
+        chmod +x build.sh
