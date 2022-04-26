@@ -7,21 +7,21 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: macos-10.15
+  build_macos_x86_64:
+    runs-on: ${{ matrix.os }}
     defaults:
       run:
         working-directory: ./python3-macos    
     strategy:
       matrix:
         env:
-          - { ARCH: x86_64, PYVER: 3.7.9 }
+          - { PYVER: 3.7.9 }
           
-          - { ARCH: x86_64, PYVER: 3.8.9 }
+          - { PYVER: 3.8.9 }
           
-          - { ARCH: x86_64, PYVER: 3.9.9 }
+          - { PYVER: 3.9.9 }
 
-          - { ARCH: x86_64, PYVER: 3.10.4 }
+          - { PYVER: 3.10.4 }
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v2
@@ -34,7 +34,6 @@ jobs:
         chmod +x build.sh
 
         # Set env parameters
-        export ARCH=${{ matrix.env.ARCH }}
         export PYVER=${{ matrix.env.PYVER }}
 
         # Run the build script

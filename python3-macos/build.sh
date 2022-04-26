@@ -10,8 +10,10 @@ brew install xz
 THIS_DIR="$PWD"
 PY_SRC_DIR=src/Python-$PYVER
 
-# Navigate to the target dir
-echo "$THIS_DIR"
+# Clear the last build
+if [ -d src ]; then rm -Rf src; fi
+if [ -d build ]; then rm -Rf build; fi
+if [ -d embedabble ]; then rm -Rf embedabble; fi
 
 # Create the Python source dir
 mkdir -p src
