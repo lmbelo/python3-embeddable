@@ -20,11 +20,10 @@ tar --no-same-owner -xf Python-$PYVER.tar.xz
 
 popd
 
-# ----------------
+# ---------------- #
 
 pushd $PY_SRC_DIR
-ls -l
-ls -R
+
 # Configure and make Python from source
 ./configure --prefix=/usr "$@" --enable-shared
 make
