@@ -42,11 +42,11 @@ jobs:
     - name: Create package
       id: create_package
       run: |
-        cd python3-macos/Python-{{ matrix.env.PYVER }}   
+        cd python3-macos/embedabble   
         package_filename=python3-macos-${{ matrix.env.PYVER }}-x86_64.zip
         7z a -t7z $package_filename * -r
     - name: Save build
       uses: actions/upload-artifact@v2
       with:
-        path: python3-macos/Python-{{ matrix.env.PYVER }}/${{ steps.create_package.outputs.package_filename }}
+        path: python3-macos/embedabble/${{ steps.create_package.outputs.package_filename }}
         if-no-files-found: error
