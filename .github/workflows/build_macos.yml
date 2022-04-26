@@ -34,7 +34,7 @@ jobs:
         chmod +x build.sh
 
         # Set env parameters
-        PYVER=${{ matrix.env.PYVER }}
+        export PYVER=${{ matrix.env.PYVER }}
 
         # Run the build script
         ./build.sh
