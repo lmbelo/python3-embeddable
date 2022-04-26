@@ -32,3 +32,6 @@ jobs:
       run: |
         # Make the script runnable
         chmod +x build.sh
+
+        # Run the build script
+        ./build.sh
