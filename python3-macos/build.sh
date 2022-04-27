@@ -30,7 +30,7 @@ popd
 pushd $PY_SRC_DIR
 
 # Configure and make Python from source
-./configure --prefix=/usr "$@" --enable-shared
+./configure --prefix=/usr "$@" --enable-shared --enable-universalsdk --with-universal-archs=universal2
 make
 make install DESTDIR="$THIS_DIR/build"
 
