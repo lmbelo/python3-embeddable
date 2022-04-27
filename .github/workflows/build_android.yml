@@ -1,0 +1,56 @@
+name: Build Android
+
+on: 
+  #push:
+
+  # Manual run
+  workflow_dispatch:
+
+# Release-related code borrowed from
+# https://github.com/actions/create-release/issues/14#issuecomment-555379810
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./python3-android    
+    strategy:
+      matrix:
+        env:
+          - { ARCH: arm,   API: 21, PYVER: 3.7.9 }
+          - { ARCH: arm64, API: 21, PYVER: 3.7.9 }
+          
+          - { ARCH: arm,   API: 21, PYVER: 3.8.9 }
+          - { ARCH: arm64, API: 21, PYVER: 3.8.9 }
+          
+          - { ARCH: arm,   API: 21, PYVER: 3.9.9 }
+          - { ARCH: arm64, API: 21, PYVER: 3.9.9 }
+
+          - { ARCH: arm,   API: 21, PYVER: 3.10.4 }
+          - { ARCH: arm64, API: 21, PYVER: 3.10.4 }
+    steps:
+    - name: Checkout main repo
+      uses: actions/checkout@v2
+    - name: Update scripts permission
+      run: |        
+        find -type f -iname "*.sh" -exec chmod +x {} \;
+        find ./Android -type f -iname "*.py" -exec chmod +x {} \;
+    - name: Building
+      run: |
+        docker run --rm -v $(pwd):/python3-android \
+            --env ARCH=${{ matrix.env.ARCH }} \
+            --env ANDROID_API=${{ matrix.env.API }} \
+            --env PYVER=${{ matrix.env.PYVER }} \
+            python:${{ matrix.env.PYVER }}-slim /python3-android/docker-build.sh        
+    - name: Create package
+      id: create_package
+      run: |
+        cd embedabble           
+        package_filename=python3-linux-${{ matrix.env.PYVER }}-x86_64.zip
+        7z a -t7z $package_filename * -r
+        echo ::set-output name=package_filename::$package_filename
+    - name: Save build
+      uses: actions/upload-artifact@v2
+      with:
+        path: python3-linux/embedabble/${{ steps.create_package.outputs.package_filename }}
+        if-no-files-found: error
