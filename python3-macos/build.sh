@@ -6,6 +6,15 @@ set -x
 # Install requirements
 brew install xz
 
+if [ $ARCH = "x86_64" ] || [ $ARCH = "universal2" ]; then
+    echo "Building for Python for $ARCH"
+    mkdir $ARCH    
+    cd $ARCH
+else
+    echo "Unsupported platform"
+    exit 1
+fi
+
 # Initialize variables
 THIS_DIR="$PWD"
 PY_SRC_DIR=src/Python-$PYVER
@@ -30,7 +39,11 @@ popd
 pushd $PY_SRC_DIR
 
 # Configure and make Python from source
-./configure --prefix=/usr "$@" --enable-shared --enable-universalsdk --with-universal-archs=universal2
+if [ $ARCH = "universal2" ]; then
+  ./configure --prefix=/usr "$@" --enable-shared --enable-universalsdk --with-universal-archs=universal2
+else
+  ./configure --prefix=/usr "$@" --enable-shared
+fi
 make
 make install DESTDIR="$THIS_DIR/build"
 
