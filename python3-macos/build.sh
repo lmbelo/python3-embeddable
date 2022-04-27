@@ -7,7 +7,7 @@ set -x
 brew install xz
 
 if [ $ARCH = "x86_64" ] || [ $ARCH = "universal2" ]; then
-    echo "Building for Python for $ARCH"
+    echo "Building Python for $ARCH"
     mkdir $ARCH    
     cd $ARCH
 else
