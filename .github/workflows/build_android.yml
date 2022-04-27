@@ -46,9 +46,10 @@ jobs:
       id: create_package
       run: |
         cd embedabble         
+        mkdir tmp
         ls -R  
         package_filename=python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
-        7z a -t7z -w"/embedable/tmp" $package_filename * -r
+        7z a -t7z -w"tmp" $package_filename * -r
         echo ::set-output name=package_filename::$package_filename
     - name: Save build
       uses: actions/upload-artifact@v2
