@@ -46,11 +46,11 @@ jobs:
       id: create_package
       run: |
         cd embedabble           
-        package_filename=python3-linux-${{ matrix.env.PYVER }}-x86_64.zip
+        package_filename=python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
         7z a -t7z $package_filename * -r
         echo ::set-output name=package_filename::$package_filename
     - name: Save build
       uses: actions/upload-artifact@v2
       with:
-        path: python3-linux/embedabble/${{ steps.create_package.outputs.package_filename }}
+        path: python3-android/embedabble/${{ steps.create_package.outputs.package_filename }}
         if-no-files-found: error
