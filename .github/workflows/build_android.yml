@@ -47,7 +47,7 @@ jobs:
       run: |
         cd embedabble         
         package_filename=python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
-        sudo 7z a -t7z -w"tmp" $package_filename * -r
+        sudo 7z a -t7z $package_filename * -r
         echo ::set-output name=package_filename::$package_filename
     - name: Save build
       uses: actions/upload-artifact@v2
