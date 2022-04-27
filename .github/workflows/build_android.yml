@@ -18,16 +18,16 @@ jobs:
       matrix:
         env:
           - { ARCH: arm,   API: 21, PYVER: 3.7.9 }
-          - { ARCH: arm64, API: 21, PYVER: 3.7.9 }
+          #- { ARCH: arm64, API: 21, PYVER: 3.7.9 }
           
-          - { ARCH: arm,   API: 21, PYVER: 3.8.9 }
-          - { ARCH: arm64, API: 21, PYVER: 3.8.9 }
+          #- { ARCH: arm,   API: 21, PYVER: 3.8.9 }
+          #- { ARCH: arm64, API: 21, PYVER: 3.8.9 }
           
-          - { ARCH: arm,   API: 21, PYVER: 3.9.9 }
-          - { ARCH: arm64, API: 21, PYVER: 3.9.9 }
+          #- { ARCH: arm,   API: 21, PYVER: 3.9.9 }
+          #- { ARCH: arm64, API: 21, PYVER: 3.9.9 }
 
-          - { ARCH: arm,   API: 21, PYVER: 3.10.4 }
-          - { ARCH: arm64, API: 21, PYVER: 3.10.4 }
+          #- { ARCH: arm,   API: 21, PYVER: 3.10.4 }
+          #- { ARCH: arm64, API: 21, PYVER: 3.10.4 }
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v2
@@ -45,7 +45,8 @@ jobs:
     - name: Create package
       id: create_package
       run: |
-        cd embedabble           
+        cd embedabble         
+        ls -R  
         package_filename=python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
         7z a -t7z $package_filename * -r
         echo ::set-output name=package_filename::$package_filename

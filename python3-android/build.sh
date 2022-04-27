@@ -31,8 +31,8 @@ python -m pip install dataclasses
 make
 make install DESTDIR="$THIS_DIR/build"
 popd
-cp -r $SRCDIR/Android/sysroot/usr/share/terminfo build/usr/share/
-cp devscripts/env.sh build/
+#cp -r $SRCDIR/Android/sysroot/usr/share/terminfo build/usr/share/
+#cp devscripts/env.sh build/
 
 # Create the embeddable dir and moves Python distribution into it
 mkdir -p embedabble
