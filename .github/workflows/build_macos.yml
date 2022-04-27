@@ -25,9 +25,9 @@ jobs:
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v2
-    #- uses: maxim-lobanov/setup-xcode@v1
-    #  with:
-    #    xcode-version: '12.4'
+    - uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest
     - name: Build Python
       run: |
         # Make the script runnable
