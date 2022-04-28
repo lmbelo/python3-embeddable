@@ -26,10 +26,8 @@ cd python-%PYVER%-embed-%ARCH%\
 for /r %%x in (*._pth) do (call :FindReplace "#import site" "import site" %%x)
 cd ..
 
-:: Copy and run the get-pip script to the embeddable folder
-xcopy ..\get-pip.py python-%PYVER%-embed-%ARCH%\ /Y
-python python-%PYVER%-embed-%ARCH%\get-pip.py
-del python-%PYVER%-embed-%ARCH%\get-pip.py
+:: Run the get-pip script
+python-%PYVER%-embed-%ARCH%\python.exe ..\get-pip.py
 
 :: Create the final embeddable dir and moves Python distribution into it
 if exist "embeddable\" rmdir /S /Q "embeddable\"
