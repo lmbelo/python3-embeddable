@@ -15,11 +15,11 @@ jobs:
     strategy:
       matrix:
         env:
-          - { ARCH: win32, PYVER: 3.7.13, PYRUN: '3.7', PYRUNARCH: 'x86'}
-          - { ARCH: amd64, PYVER: 3.7.13, PYRUN: '3.7', PYRUNARCH: 'x64'}
+          - { ARCH: win32, PYVER: 3.7.9, PYRUN: '3.7', PYRUNARCH: 'x86'}
+          - { ARCH: amd64, PYVER: 3.7.9, PYRUN: '3.7', PYRUNARCH: 'x64'}
           
-          - { ARCH: win32, YVER: 3.8.13, PYRUN: '3.8', PYRUNARCH: 'x86'}
-          - { ARCH: amd64, YVER: 3.8.13, PYRUN: '3.8', PYRUNARCH: 'x64'}
+          - { ARCH: win32, YVER: 3.8.10, PYRUN: '3.8', PYRUNARCH: 'x86'}
+          - { ARCH: amd64, YVER: 3.8.10, PYRUN: '3.8', PYRUNARCH: 'x64'}
           
           - { ARCH: win32, PYVER: 3.9.12, PYRUN: '3.9', PYRUNARCH: 'x86'}
           - { ARCH: amd64, PYVER: 3.9.12, PYRUN: '3.9', PYRUNARCH: 'x64'}
