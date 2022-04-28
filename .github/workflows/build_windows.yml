@@ -43,7 +43,9 @@ jobs:
       id: create_package
       run: |
         dir
-        cd ${{ matrix.env.ARCH }}\embedabble                   
+        cd ${{ matrix.env.ARCH }}
+        dir
+        cd embeddable                   
         7z a -t7z python3-windows-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip * -r
     - name: Save build
       uses: actions/upload-artifact@v2
