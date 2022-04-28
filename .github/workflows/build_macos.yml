@@ -1,7 +1,7 @@
 name: Build MacOS
 
 on: 
-  push:
+  #push:
 
   # Manual run
   workflow_dispatch:
@@ -60,9 +60,9 @@ jobs:
     strategy:
       matrix:
         env:          
-          - { PYVER: 3.8.13 }
+          #- { PYVER: 3.8.13 }
           
-          - { PYVER: 3.9.12 }
+          #- { PYVER: 3.9.12 }
 
           - { PYVER: 3.10.4 }
     steps:

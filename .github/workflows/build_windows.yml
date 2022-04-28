@@ -1,0 +1,50 @@
+name: Build Windows
+
+on: 
+  push:
+
+  # Manual run
+  workflow_dispatch:
+
+jobs:
+  build_windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: ./python3-windows    
+    strategy:
+      matrix:
+        env:
+          #- { ARCH: win32, PYVER: 3.7.13 }
+          #- { ARCH: amd64, PYVER: 3.7.13 }
+          
+          #- { ARCH: win32, YVER: 3.8.13 }
+          #- { ARCH: amd64, YVER: 3.8.13 }
+          
+          #- { ARCH: win32, PYVER: 3.9.12 }
+          #- { ARCH: amd64, PYVER: 3.9.12 }
+
+          #- { ARCH: win32, PYVER: 3.10.4 }
+          - { ARCH: amd64, PYVER: 3.10.4 }
+    steps:
+    - name: Checkout main repo
+      uses: actions/checkout@v2
+    - name: Build Python
+      run: |
+        @echo off
+        :: Set env parameters
+        set ARCH=${{ matrix.env.ARCH }}
+        set PYVER=${{ matrix.env.PYVER }}
+
+        :: Run the build script
+        build.bat
+    - name: Create package
+      id: create_package
+      run: |
+        cd ${{ matrix.env.ARCH }}/embedabble                   
+        7z a -t7z python3-windows-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip * -r
+    - name: Save build
+      uses: actions/upload-artifact@v2
+      with:
+        path: python3-windows/${{ matrix.env.ARCH }}/embedabble/python3-windows-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
+        if-no-files-found: error

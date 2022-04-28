@@ -17,14 +17,14 @@ jobs:
     strategy:
       matrix:
         env:
-          - { ARCH: arm,   API: 21, PYVER: 3.7.9 }
-          - { ARCH: arm64, API: 21, PYVER: 3.7.9 }
+          - { ARCH: arm,   API: 21, PYVER: 3.7.13 }
+          - { ARCH: arm64, API: 21, PYVER: 3.7.13 }
           
-          - { ARCH: arm,   API: 21, PYVER: 3.8.9 }
-          - { ARCH: arm64, API: 21, PYVER: 3.8.9 }
+          - { ARCH: arm,   API: 21, PYVER: 3.8.13 }
+          - { ARCH: arm64, API: 21, PYVER: 3.8.13 }
           
-          - { ARCH: arm,   API: 21, PYVER: 3.9.9 }
-          - { ARCH: arm64, API: 21, PYVER: 3.9.9 }
+          - { ARCH: arm,   API: 21, PYVER: 3.9.12 }
+          - { ARCH: arm64, API: 21, PYVER: 3.9.12 }
 
           - { ARCH: arm,   API: 21, PYVER: 3.10.4 }
           - { ARCH: arm64, API: 21, PYVER: 3.10.4 }

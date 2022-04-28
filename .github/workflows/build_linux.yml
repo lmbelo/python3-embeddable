@@ -15,11 +15,11 @@ jobs:
     strategy:
       matrix:
         env:
-          - { PYVER: 3.7.9 }
+          - { PYVER: 3.7.13 }
           
-          - { PYVER: 3.8.9 }
+          - { PYVER: 3.8.13 }
           
-          - { PYVER: 3.9.9 }
+          - { PYVER: 3.9.12 }
 
           - { PYVER: 3.10.4 }
     steps:
