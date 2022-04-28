@@ -15,17 +15,17 @@ jobs:
     strategy:
       matrix:
         env:
-          #- { ARCH: win32, PYVER: 3.7.13, PYRUN: 3.7, PYRUNARCH: x86}
-          #- { ARCH: amd64, PYVER: 3.7.13, PYRUN: 3.7, PYRUNARCH: x64}
+          #- { ARCH: win32, PYVER: 3.7.13, PYRUN: 3.7, PYRUNARCH: 'x86'}
+          #- { ARCH: amd64, PYVER: 3.7.13, PYRUN: 3.7, PYRUNARCH: 'x64'}
           
-          #- { ARCH: win32, YVER: 3.8.13, PYRUN: 3.8, PYRUNARCH: x86}
-          #- { ARCH: amd64, YVER: 3.8.13, PYRUN: 3.8, PYRUNARCH: x64}
+          #- { ARCH: win32, YVER: 3.8.13, PYRUN: 3.8, PYRUNARCH: 'x86'}
+          #- { ARCH: amd64, YVER: 3.8.13, PYRUN: 3.8, PYRUNARCH: 'x64'}
           
-          #- { ARCH: win32, PYVER: 3.9.12, PYRUN: 3.9, PYRUNARCH: x86}
-          #- { ARCH: amd64, PYVER: 3.9.12, PYRUN: 3.9, PYRUNARCH: x64}
+          #- { ARCH: win32, PYVER: 3.9.12, PYRUN: '3.9', PYRUNARCH: 'x86'}
+          #- { ARCH: amd64, PYVER: 3.9.12, PYRUN: '3.9', PYRUNARCH: 'x64'}
 
-          #- { ARCH: win32, PYVER: 3.10.4, PYRUN: '3.10', PYRUNARCH: x86}
-          - { ARCH: amd64, PYVER: 3.10.4, PYRUN: '3.10', PYRUNARCH: x64} 
+          #- { ARCH: win32, PYVER: 3.10.4, PYRUN: '3.10', PYRUNARCH: 'x86'}
+          - { ARCH: amd64, PYVER: 3.10.4, PYRUN: '3.10', PYRUNARCH: 'x64'} 
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v2
@@ -46,11 +46,9 @@ jobs:
         build.bat
     - name: Create package
       id: create_package
-      run: |
-        dir
-        cd ${{ matrix.env.ARCH }}
-        dir
-        cd embeddable                   
+      shell: cmd
+      run: |        
+        cd ${{ matrix.env.ARCH }}\embeddable\                
         7z a -t7z python3-windows-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip * -r
     - name: Save build
       uses: actions/upload-artifact@v2
