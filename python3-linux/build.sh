@@ -3,10 +3,6 @@
 set -e
 set -x
 
-# Install requirements
-sudo apt-get -y update
-sudo apt-get -y install xz
-
 # Initialize variables
 THIS_DIR="$PWD"
 PY_SRC_DIR=src/Python-$PYVER

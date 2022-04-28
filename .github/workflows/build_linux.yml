@@ -1,4 +1,4 @@
-name: Build MacOS
+name: Build Linux
 
 on: 
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_ubuntu_x86_64:
+  build_ubuntu:
     runs-on: ubuntu-latest
     defaults:
       run:
