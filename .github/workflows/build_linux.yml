@@ -40,7 +40,7 @@ jobs:
       run: |
         cd embedabble           
         package_filename=python3-linux-${{ matrix.env.PYVER }}-x86_64.zip
-        7z a -t7z $package_filename * -r
+        7z a -tzip $package_filename * -r
         echo ::set-output name=package_filename::$package_filename
     - name: Save build
       uses: actions/upload-artifact@v2

@@ -44,7 +44,7 @@ jobs:
       run: |
         cd x86_64/embedabble           
         package_filename=python3-macos-${{ matrix.env.PYVER }}-x86_64.zip
-        7z a -t7z $package_filename * -r
+        7z a -tzip $package_filename * -r
         echo ::set-output name=package_filename::$package_filename
     - name: Save build
       uses: actions/upload-artifact@v2
@@ -87,7 +87,7 @@ jobs:
       run: |
         cd universal2/embedabble           
         package_filename=python3-macos-${{ matrix.env.PYVER }}-universal2.zip
-        7z a -t7z $package_filename * -r
+        7z a -tzip $package_filename * -r
         echo ::set-output name=package_filename::$package_filename
     - name: Save build
       uses: actions/upload-artifact@v2
