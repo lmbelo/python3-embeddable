@@ -50,8 +50,9 @@ jobs:
       run: |        
         cd ${{ matrix.env.ARCH }}\embeddable\                
         7z a -t7z python3-windows-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip * -r
+        dir
     - name: Save build
       uses: actions/upload-artifact@v2
       with:
-        path: python3-windows\${{ matrix.env.ARCH }}\embedabble\python3-windows-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
+        path: python3-windows\${{ matrix.env.ARCH }}\embeddable\python3-windows-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
         if-no-files-found: error
