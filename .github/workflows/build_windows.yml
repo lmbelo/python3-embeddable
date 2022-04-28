@@ -42,6 +42,7 @@ jobs:
     - name: Create package
       id: create_package
       run: |
+        dir
         cd ${{ matrix.env.ARCH }}\embedabble                   
         7z a -t7z python3-windows-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip * -r
     - name: Save build
