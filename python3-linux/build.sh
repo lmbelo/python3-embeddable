@@ -4,8 +4,8 @@ set -e
 set -x
 
 # Install requirements
-apt-get -y update
-apt-get -y install xz
+sudo apt-get -y update
+sudo apt-get -y install xz
 
 # Initialize variables
 THIS_DIR="$PWD"
