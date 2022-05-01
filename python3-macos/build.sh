@@ -4,7 +4,7 @@ set -e
 set -x
 
 # Install requirements
-brew install xz
+brew install xz openssl
 
 if [ $ARCH = "x86_64" ] || [ $ARCH = "universal2" ]; then
     echo "Building Python for $ARCH"
@@ -40,9 +40,9 @@ pushd $PY_SRC_DIR
 
 # Configure and make Python from source
 if [ $ARCH = "universal2" ]; then
-  ./configure --prefix=/usr "$@" --enable-shared --enable-universalsdk --with-universal-archs=universal2
+  ./configure --prefix=/usr "$@" --enable-shared --enable-universalsdk --with-universal-archs=universal2 --with-openssl=$(brew --prefix openssl)
 else
-  ./configure --prefix=/usr "$@" --enable-shared
+  ./configure --prefix=/usr "$@" --enable-shared --with-openssl=$(brew --prefix openssl)
 fi
 make
 make install DESTDIR="$THIS_DIR/build"
