@@ -1044,7 +1044,6 @@ def buildPython():
     print("Running configure...")
     runCommand("%s -C --enable-shared --enable-universalsdk=/ "
                "--with-universal-archs=%s "
-               #"--prefix=%s "
                "%s "
                "%s "
                "%s "
@@ -1055,11 +1054,8 @@ def buildPython():
                "CFLAGS='-g -I%s/libraries/usr/local/include' 2>&1"%(
         shellQuote(os.path.join(SRCDIR, 'configure')),
         UNIVERSALARCHS,
-        
-        #shellQuote(buildDir),
-
         (' ', '--with-computed-gotos ')[PYTHON_3],
-        (' ', '--with-ensurepip ')[PYTHON_3],
+        (' ', '--with-ensurepip=install ')[PYTHON_3],
         (' ', "--with-openssl='%s/libraries/usr/local'"%(
                             shellQuote(WORKDIR)[1:-1],))[PYTHON_3],
         #(' ', "--enable-optimizations --with-lto")[compilerCanOptimize()],
@@ -1145,6 +1141,16 @@ def buildPython():
     frmDir = os.path.join(rootDir, 'usr', 'local')
     frmDirVersioned = frmDir
     path_to_lib = os.path.join(frmDirVersioned, 'lib', 'python%s'%(version,))
+    # Copy prebuilt shared libraries
+    if not PREBUILTDEPS is None:
+        runCommand("mv %s/* %s"%(
+                    shellQuote(os.path.join(PREBUILTDEPS, 'lib')),
+                    shellQuote(fw_lib_dir) ))
+
+        runCommand("mv %s/* %s"%(
+                    shellQuote(os.path.join(PREBUILTDEPS, 'include')),
+                    shellQuote(fw_lib_dir) ))
+
     # create directory for OpenSSL certificates
     sslDir = os.path.join(frmDirVersioned, 'etc', 'openssl')
     os.makedirs(sslDir)
@@ -1181,8 +1187,6 @@ def buildPython():
 
     if shared_lib_error:
         fatal("Unexpected shared library errors.")
-
-    #return
 
     print("Running makefile")
     if PYTHON_3:
