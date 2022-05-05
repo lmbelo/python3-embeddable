@@ -1432,7 +1432,7 @@ def main():
     buildLibraries()
 
     # Copy the pre-built libs
-    #copyPreBuiltLibraries()
+    copyPreBuiltLibraries()
 
     # Now build python itself
     buildPython()
