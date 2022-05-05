@@ -34,6 +34,6 @@ popd
 #cp -r $SRCDIR/Android/sysroot/usr/share/terminfo build/usr/share/
 #cp devscripts/env.sh build/
 
-# Create the embeddable dir and moves Python distribution into it
+# Create the embeddable dir and move Python distribution into it
 mkdir -p embedabble
 mv build/usr/* embedabble
