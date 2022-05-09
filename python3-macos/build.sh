@@ -56,7 +56,23 @@ popd
 mkdir -p embedabble
 mv -v build/_root/usr/local/* "$THIS_DIR/embedabble/"
 
+cd "$THIS_DIR/embedabble"
+
 # Delete undesired packages
 PYSIMPLEVER=$(cut -d '.' -f 1,2 <<< "$PYVER")
-find "$THIS_DIR/embedabble/lib/python$PYSIMPLEVER" -type d -name "config-$PYSIMPLEVER*" -prune -exec rm -rf {} \;
-find "$THIS_DIR/embedabble/lib/python$PYSIMPLEVER" -type d -name "test" -prune -exec rm -rf {} \;
+find "lib/python$PYSIMPLEVER" -type d -name "config-$PYSIMPLEVER*" -prune -exec rm -rf {} \;
+find "lib/python$PYSIMPLEVER" -type d -name "test" -prune -exec rm -rf {} \;
+
+# Create the activate script
+touch env.sh
+cat <<EOT >> env.sh
+export PATH=$PATH:$PWD/bin
+if [ ! -z "$LD_LIBRARY_PATH" ] ; then
+    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:"
+fi
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH$PWD/lib"
+if [ ! -z "$DYLD_LIBRARY_PATH" ] ; then
+    export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:"
+fi
+export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH$PWD/lib:$DYLD_LIBRARY_PATH$PWD/bin"
+EOT
