@@ -64,8 +64,8 @@ find "lib/python$PYSIMPLEVER" -type d -name "config-$PYSIMPLEVER*" -prune -exec 
 find "lib/python$PYSIMPLEVER" -type d -name "test" -prune -exec rm -rf {} \;
 
 # Create the activate script
-touch env.sh
-cat <<EOT >> env.sh
+touch activate.sh
+cat <<EOT >> activate.sh
 export PATH=$PATH:$PWD/bin
 if [ ! -z "$LD_LIBRARY_PATH" ] ; then
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:"
