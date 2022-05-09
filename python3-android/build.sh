@@ -41,3 +41,4 @@ mv build/usr/* embedabble
 # Delete undesired packages
 PYSIMPLEVER=$(cut -d '.' -f 1,2 <<< "$PYVER")
 find "$THIS_DIR/embedabble/lib/python$PYSIMPLEVER" -type d -name "config-$PYSIMPLEVER*" -prune -exec rm -rf {} \;
+find "$THIS_DIR/embedabble/lib/python$PYSIMPLEVER" -type d -name "test" -prune -exec rm -rf {} \;
