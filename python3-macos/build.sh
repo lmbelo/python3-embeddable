@@ -53,7 +53,9 @@ fi
 popd
 
 # Create the embeddable dir and moves Python distribution into it
-PYSIMPLEVER=$(cut -d '.' -f 1,2 <<< "$PYVER")
 mkdir -p embedabble
-
 mv -v build/_root/usr/local/* "$THIS_DIR/embedabble/"
+
+# Delete undesired packages
+PYSIMPLEVER=$(cut -d '.' -f 1,2 <<< "$PYVER")
+find "$THIS_DIR/embedabble/lib/python$PYSIMPLEVER" -type d -name "config-$PYSIMPLEVER*" exec rm -rf {} \

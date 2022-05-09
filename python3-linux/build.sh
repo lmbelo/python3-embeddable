@@ -27,7 +27,7 @@ popd
 pushd $PY_SRC_DIR
 
 # Configure and make Python from source
-./configure --enable-shared --prefix=/usr
+./configure --enable-shared --prefix=/usr --disable-test-modules
 make
 make install DESTDIR="$THIS_DIR/build"
 
@@ -36,3 +36,8 @@ popd
 # Create the embeddable dir and moves Python distribution into it
 mkdir -p embedabble
 mv build/usr/* embedabble
+
+# Delete undesired packages
+PYSIMPLEVER=$(cut -d '.' -f 1,2 <<< "$PYVER")
+find "$THIS_DIR/embedabble/lib/python$PYSIMPLEVER" -type d -name "config-$PYSIMPLEVER*" exec rm -rf {} \
+

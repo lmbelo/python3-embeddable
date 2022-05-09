@@ -1042,7 +1042,7 @@ def buildPython():
     # during the build, augment the library path so that the interpreter
     # will find them during its extension import sanity checks.
     print("Running configure...")
-    runCommand("%s -C --enable-shared --enable-universalsdk=/ "
+    runCommand("%s -C --enable-shared --enable-universalsdk=/ --disable-test-modules "
                "--with-universal-archs=%s "
                "%s "
                "%s "
