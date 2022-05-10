@@ -57,4 +57,4 @@ fi
 export LD_LIBRARY_PATH="\$PWD/lib:\$LD_LIBRARY_PATH"
 EOT
 
-sudo chmod a+x activate.sh
+chmod a+x activate.sh
