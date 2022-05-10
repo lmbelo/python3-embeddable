@@ -57,6 +57,7 @@ export LD_LIBRARY_PATH="\$PWD/lib:\$LD_LIBRARY_PATH"
 EOT
 
 sudo chmod a+x activate.sh
-./activate.sh
+. ./activate.sh
 which python3
+echo $PATH
 python3 -m ensurepip
