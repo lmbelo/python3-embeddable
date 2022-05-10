@@ -66,13 +66,19 @@ find "lib/python$PYSIMPLEVER" -type d -name "test" -prune -exec rm -rf {} \;
 # Create the activate script
 touch activate.sh
 cat <<EOT >> activate.sh
-export PATH=$PATH:$PWD/bin
-if [ ! -z "$LD_LIBRARY_PATH" ] ; then
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:"
+#!/bin/bash
+export PYTHONHOME=\$PWD
+export PATH=\$PWD/bin:\$PATH
+if [ ! -z "\$LD_LIBRARY_PATH" ] ; then
+    export LD_LIBRARY_PATH="\$LD_LIBRARY_PATH:"
 fi
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH$PWD/lib"
-if [ ! -z "$DYLD_LIBRARY_PATH" ] ; then
-    export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:"
+export LD_LIBRARY_PATH="\$PWD/lib:\$LD_LIBRARY_PATH"
+if [ ! -z "\$DYLD_LIBRARY_PATH" ] ; then
+    export DYLD_LIBRARY_PATH="\$DYLD_LIBRARY_PATH:"
 fi
-export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH$PWD/lib:$DYLD_LIBRARY_PATH$PWD/bin"
+export DYLD_LIBRARY_PATH="\$PWD/lib:\$DYLD_LIBRARY_PATH"
 EOT
+
+./activate.sh
+which python3
+python3 -m ensurepip
