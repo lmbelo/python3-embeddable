@@ -1047,18 +1047,18 @@ def buildPython():
                "%s "
                "%s "
                "%s "
-               #"%s "
+               "%s "
                "%s "
                "%s "
                "LDFLAGS='-g -L%s/libraries/usr/local/lib' "
                "CFLAGS='-g -I%s/libraries/usr/local/include' 2>&1"%(
         shellQuote(os.path.join(SRCDIR, 'configure')),
         UNIVERSALARCHS,
-        (' ', '--with-computed-gotos ')[PYTHON_3],
-        (' ', '--with-ensurepip=install ')[PYTHON_3],
+        (' ', '--with-computed-gotos')[PYTHON_3],
+        (' ', '--with-ensurepip=install')[PYTHON_3],
         (' ', "--with-openssl='%s/libraries/usr/local'"%(
                             shellQuote(WORKDIR)[1:-1],))[PYTHON_3],
-        #(' ', "--enable-optimizations --with-lto")[compilerCanOptimize()],
+        (' ', "--enable-optimizations")[compilerCanOptimize()],
         (' ', "TCLTK_CFLAGS='-I%s/libraries/usr/local/include'"%(
                             shellQuote(WORKDIR)[1:-1],))[internalTk()],
         (' ', "TCLTK_LIBS='-L%s/libraries/usr/local/lib -ltcl8.6 -ltk8.6'"%(
