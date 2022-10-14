@@ -136,7 +136,9 @@ def main():
     package_classes = (
         # ncurses is a dependency of readline
         NCurses,
-        BZip2, GDBM, LibFFI, LibUUID, OpenSSL, Readline, SQLite, XZ, ZLib,
+        BZip2, 
+        #GDBM, 
+        LibFFI, LibUUID, OpenSSL, Readline, SQLite, XZ, ZLib,
     )
 
     for pkg_cls in package_classes:
