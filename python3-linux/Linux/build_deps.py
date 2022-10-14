@@ -56,7 +56,7 @@ class BZip2(Package):
         self.run(['install', '-Dm644', 'bzlib.h', '-t', str(SYSROOT / 'usr' / 'include')])
 
 class GDBM(Package):
-    source = 'https://ftp.gnu.org/gnu/gdbm/gdbm-1.18.1.tar.gz'
+    source = 'https://ftp.gnu.org/gnu/gdbm/gdbm-1.19.tar.gz'
     configure_args = ['--enable-libgdbm-compat']
 
 class LibFFI(Package):
