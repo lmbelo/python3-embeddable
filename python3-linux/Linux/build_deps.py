@@ -75,7 +75,7 @@ class NCurses(Package):
     configure_args = ['--without-ada', '--enable-widec', '--without-debug', '--without-cxx-binding']
 
 class OpenSSL(Package):
-    source = 'https://www.openssl.org/source/openssl-1.1.1h.tar.gz'
+    source = 'https://www.openssl.org/source/openssl-1.1.1n.tar.gz'
 
     def configure(self):       
         self.run(['./Configure', '--prefix=/usr', '--openssldir=/etc/ssl', 'no-shared', 'no-tests'])
@@ -140,7 +140,7 @@ def main():
         BZip2, 
         GDBM, 
         LibFFI, LibUUID, 
-        #OpenSSL, 
+        OpenSSL, 
         Readline, SQLite, XZ, ZLib,
     )
 
