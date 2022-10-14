@@ -12,16 +12,15 @@ if [ -d src ]; then rm -Rf src; fi
 if [ -d build ]; then rm -Rf build; fi
 if [ -d embedabble ]; then rm -Rf embedabble; fi
 
-# Create the Python source dir and copy the Linux folder to it
-mkdir -p $SRCDIR
-
-pushd $SRCDIR
-# Download Python
-curl -vLO https://www.python.org/ftp/python/$PYVER/Python-$PYVER.tar.xz
-tar --no-same-owner -xf Python-$PYVER.tar.xz
-popd
-
-# ---------------- #
+if [ ! -d $SRCDIR ]; then
+    mkdir -p src
+    pushd src
+    curl -vLO https://www.python.org/ftp/python/$PYVER/Python-$PYVER.tar.xz
+    # Use --no-same-owner so that files extracted are still owned by the
+    # running user in a rootless container
+    tar --no-same-owner -xf Python-$PYVER.tar.xz
+    popd
+fi
 
 cp -r Linux $SRCDIR
 pushd $SRCDIR
@@ -29,7 +28,6 @@ pushd $SRCDIR
 # Build deps
 ./Linux/build_deps.py
 ./Linux/configure.py --prefix=/usr --disable-test-modules "$@"
-exit(1)
 
 # Make Python from source
 make
