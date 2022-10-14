@@ -7,8 +7,7 @@ def main():
     os.environ.update(env_vars())
 
     cmd = [
-        'bash', 
-        './configure',
+        'bash', './configure',
         '--build=x86_64-linux-gnu',
         '--enable-shared',
         'ac_cv_file__dev_ptmx=yes',

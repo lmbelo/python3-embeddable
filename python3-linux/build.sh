@@ -31,8 +31,7 @@ pushd $SRCDIR
 ./Linux/configure.py --prefix=/usr --disable-test-modules "$@"
 exit(1)
 
-# Configure and make Python from source
-./configure --enable-shared --prefix=/usr --disable-test-modules
+# Make Python from source
 make
 make install DESTDIR="$THIS_DIR/build"
 
