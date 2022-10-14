@@ -78,7 +78,7 @@ class OpenSSL(Package):
     source = 'https://www.openssl.org/source/openssl-1.1.1n.tar.gz'
 
     def configure(self):       
-        self.run(['./Configure', '--prefix=/usr', '--openssldir=/etc/ssl', 'no-shared', 'no-tests'])
+        self.run(['./Configure', '--prefix=/usr', '--openssldir=/etc/ssl', 'linux-x86_64', 'no-shared', 'no-tests'])
 
     def make_install(self):
         self.run(['make', 'install_sw', 'install_ssldirs', f'DESTDIR={SYSROOT}'])
