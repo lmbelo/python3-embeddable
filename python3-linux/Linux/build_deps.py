@@ -138,9 +138,9 @@ def main():
         # ncurses is a dependency of readline
         NCurses,
         BZip2, 
-        #GDBM, 
+        GDBM, 
         LibFFI, LibUUID, 
-        OpenSSL, 
+        #OpenSSL, 
         Readline, SQLite, XZ, ZLib,
     )
 
