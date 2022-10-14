@@ -26,6 +26,7 @@ cp -r Linux $SRCDIR
 pushd $SRCDIR
 
 # Build deps
+python -m pip install dataclasses
 ./Linux/build_deps.py
 ./Linux/configure.py --prefix=/usr --disable-test-modules "$@"
 
