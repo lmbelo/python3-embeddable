@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 
-from util import env_vars, parse_args
+from util import env_vars
 
 def main():
     os.environ.update(env_vars())

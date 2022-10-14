@@ -29,6 +29,7 @@ pushd $SRCDIR
 # Build deps
 ./Linux/build_deps.py
 ./Linux/configure.py --prefix=/usr --disable-test-modules "$@"
+exit(1)
 
 # Configure and make Python from source
 ./configure --enable-shared --prefix=/usr --disable-test-modules

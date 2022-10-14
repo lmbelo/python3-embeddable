@@ -140,7 +140,7 @@ def main():
         BZip2, 
         #GDBM, 
         LibFFI, LibUUID, 
-        #OpenSSL, 
+        OpenSSL, 
         Readline, SQLite, XZ, ZLib,
     )
 
