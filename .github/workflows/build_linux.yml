@@ -25,22 +25,21 @@ jobs:
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v2
-    - name: Build Python
+    - name: Update scripts permission
+      run: |        
+        find -type f -iname "*.sh" -exec chmod +x {} \;
+        find ./Linux -type f -iname "*.py" -exec chmod +x {} \;
+    - name: Building
       run: |
-        # Make the script runnable
-        chmod +x build.sh
-
-        # Set env parameters
-        export PYVER=${{ matrix.env.PYVER }}
-
-        # Run the build script
-        ./build.sh
+        docker run --rm -v $(pwd):/python3-linux \
+            --env PYVER=${{ matrix.env.PYVER }} \
+            python:${{ matrix.env.PYVER }}-slim /python3-linux/docker-build.sh        
     - name: Create package
       id: create_package
       run: |
-        cd embedabble           
+        cd embedabble         
         package_filename=python3-linux-${{ matrix.env.PYVER }}-x86_64.zip
-        7z a -tzip $package_filename * -r
+        sudo 7z a -tzip $package_filename * -r
         echo ::set-output name=package_filename::$package_filename
     - name: Save build
       uses: actions/upload-artifact@v2
