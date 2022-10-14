@@ -1,10 +1,10 @@
 name: Build MacOS
 
 on: 
-  push:
+  #push:
 
   # Manual run
-  #workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   build_macos_x86_64:

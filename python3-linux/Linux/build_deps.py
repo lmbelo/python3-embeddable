@@ -137,7 +137,9 @@ def main():
         NCurses,
         BZip2, 
         #GDBM, 
-        LibFFI, LibUUID, OpenSSL, Readline, SQLite, XZ, ZLib,
+        LibFFI, LibUUID, 
+        #OpenSSL, 
+        Readline, SQLite, XZ, ZLib,
     )
 
     for pkg_cls in package_classes:

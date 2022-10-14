@@ -1,10 +1,10 @@
 name: Build Android
 
 on: 
-  push:
+  #push:
 
   # Manual run
-  #workflow_dispatch:
+  workflow_dispatch:
 
 # Release-related code borrowed from
 # https://github.com/actions/create-release/issues/14#issuecomment-555379810
