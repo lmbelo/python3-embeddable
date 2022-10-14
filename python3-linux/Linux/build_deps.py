@@ -103,7 +103,7 @@ class ZLib(Package):
 
     def configure(self):
         os.environ.update({            
-            'CFLAGS': ' '.join([os.environ['CPPFLAGS'], os.environ['CFLAGS']]),
+            'CFLAGS': ' '.join([os.environ['CPPFLAGS']]),
         })
 
         self.run([
