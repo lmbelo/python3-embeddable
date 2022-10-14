@@ -4,7 +4,7 @@ set -e
 set -x
 
 apt-get update -y
-apt-get install -y autoconf autoconf-archive automake cmake gawk gettext git gcc make patch pkg-config
+apt-get install -y autoconf autoconf-archive gawk gettext git patch pkg-config build-essential
 
 cd /python3-linux
 
