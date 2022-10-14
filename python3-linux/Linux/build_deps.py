@@ -47,7 +47,6 @@ class BZip2(Package):
     def make(self):
         self.run([
             'make', 'libbz2.a',
-            f'CFLAGS={os.environ["CFLAGS"]} {os.environ["CPPFLAGS"]}',
         ])
 
     def make_install(self):
