@@ -129,6 +129,8 @@ def build_package(pkg: Package):
 def main():
     logging.basicConfig(level=logging.DEBUG)
 
+    os.environ.update(env_vars())
+
     (BASE / 'deps').mkdir(exist_ok=True)
     SYSROOT.mkdir(exist_ok=True)
 
