@@ -108,7 +108,8 @@ class ZLib(Package):
 
         self.run([
             './configure',
-            '--prefix=/usr',
+            '--prefix=/usr',            
+            '--libdir=/usr/lib',  
             '--static',
         ])
 
