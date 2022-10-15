@@ -15,14 +15,14 @@ jobs:
     strategy:
       matrix:
         env:
-          - { ARCH: win32, PYVER: 3.7.15 }
-          - { ARCH: amd64, PYVER: 3.7.15 }
+          - { ARCH: win32, PYVER: 3.7.9 }
+          - { ARCH: amd64, PYVER: 3.7.9 }
           
-          - { ARCH: win32, PYVER: 3.8.15 }
-          - { ARCH: amd64, PYVER: 3.8.15 }
+          - { ARCH: win32, PYVER: 3.8.10 }
+          - { ARCH: amd64, PYVER: 3.8.10 }
           
-          - { ARCH: win32, PYVER: 3.9.15 }
-          - { ARCH: amd64, PYVER: 3.9.15 }
+          - { ARCH: win32, PYVER: 3.9.13 }
+          - { ARCH: amd64, PYVER: 3.9.13 }
 
           - { ARCH: win32, PYVER: 3.10.8 }
           - { ARCH: amd64, PYVER: 3.10.8 } 
