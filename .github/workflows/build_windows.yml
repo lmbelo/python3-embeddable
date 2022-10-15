@@ -1,7 +1,7 @@
 name: Build Windows
 
 on: 
-  #push:
+  push:
 
   # Manual run
   workflow_dispatch:
