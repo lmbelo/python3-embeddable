@@ -10,6 +10,8 @@ def env_vars() -> Dict[str, str]:
     env = {
         # Compiler flags
         'CPPFLAGS': f'-I{SYSROOT}/usr/include',
+        'CFLAGS': '-fPIC',
+        'CXXLAGS': '-fPIC',
         'LDFLAGS': f'-L{SYSROOT}/usr/lib',
 
         # pkg-config settings
