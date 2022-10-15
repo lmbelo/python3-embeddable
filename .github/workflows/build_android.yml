@@ -17,17 +17,17 @@ jobs:
     strategy:
       matrix:
         env:
-          - { ARCH: arm,   API: 21, PYVER: 3.7.13 }
-          - { ARCH: arm64, API: 21, PYVER: 3.7.13 }
+          - { ARCH: arm,   API: 21, PYVER: 3.7.15 }
+          - { ARCH: arm64, API: 21, PYVER: 3.7.15 }
           
-          - { ARCH: arm,   API: 21, PYVER: 3.8.13 }
-          - { ARCH: arm64, API: 21, PYVER: 3.8.13 }
+          - { ARCH: arm,   API: 21, PYVER: 3.8.15 }
+          - { ARCH: arm64, API: 21, PYVER: 3.8.15 }
           
-          - { ARCH: arm,   API: 21, PYVER: 3.9.12 }
-          - { ARCH: arm64, API: 21, PYVER: 3.9.12 }
+          - { ARCH: arm,   API: 21, PYVER: 3.9.15 }
+          - { ARCH: arm64, API: 21, PYVER: 3.9.15 }
 
-          - { ARCH: arm,   API: 21, PYVER: 3.10.4 }
-          - { ARCH: arm64, API: 21, PYVER: 3.10.4 }
+          - { ARCH: arm,   API: 21, PYVER: 3.10.8 }
+          - { ARCH: arm64, API: 21, PYVER: 3.10.8 }
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v2
