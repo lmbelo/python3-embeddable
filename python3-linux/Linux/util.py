@@ -19,3 +19,7 @@ def env_vars() -> Dict[str, str]:
     }
 
     return env
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    return parser.parse_known_args()
