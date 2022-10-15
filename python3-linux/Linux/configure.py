@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 
-from util import ARCHITECTURES, env_vars, parse_args
+from util import env_vars, parse_args
 
 def main():
     args, remaining = parse_args()
