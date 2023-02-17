@@ -27,7 +27,7 @@ pushd $SRCDIR
 
 # Build deps
 ./Linux/build_deps.py
-./Linux/configure.py --prefix=/usr --disable-test-modules "$@"
+./Linux/configure.py --prefix=/usr --disable-test-modules --with-build-python="$THIS_DIR/build" "$@"
 
 # Make Python from source
 make
