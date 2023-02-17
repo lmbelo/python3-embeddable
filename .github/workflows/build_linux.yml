@@ -15,13 +15,15 @@ jobs:
     strategy:
       matrix:
         env:
-          - { PYVER: 3.7.15 }
+          - { PYVER: 3.7.16 }
           
-          - { PYVER: 3.8.15 }
+          - { PYVER: 3.8.16 }
           
-          - { PYVER: 3.9.15 }
+          - { PYVER: 3.9.16 }
 
-          - { PYVER: 3.10.8 }
+          - { PYVER: 3.10.9 }
+
+          - { PYVER: 3.11.2 }
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v2

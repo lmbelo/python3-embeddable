@@ -15,17 +15,20 @@ jobs:
     strategy:
       matrix:
         env:
-          - { ARCH: win32, PYVER: 3.7.9 }
-          - { ARCH: amd64, PYVER: 3.7.9 }
+          - { ARCH: win32, PYVER: 3.7.16 }
+          - { ARCH: amd64, PYVER: 3.7.16 }
           
-          - { ARCH: win32, PYVER: 3.8.10 }
-          - { ARCH: amd64, PYVER: 3.8.10 }
+          - { ARCH: win32, PYVER: 3.8.16 }
+          - { ARCH: amd64, PYVER: 3.8.16 }
           
-          - { ARCH: win32, PYVER: 3.9.13 }
-          - { ARCH: amd64, PYVER: 3.9.13 }
+          - { ARCH: win32, PYVER: 3.9.16 }
+          - { ARCH: amd64, PYVER: 3.9.16 }
 
-          - { ARCH: win32, PYVER: 3.10.8 }
-          - { ARCH: amd64, PYVER: 3.10.8 } 
+          - { ARCH: win32, PYVER: 3.10.9 }
+          - { ARCH: amd64, PYVER: 3.10.9 } 
+
+          - { ARCH: win32, PYVER: 3.11.2 }
+          - { ARCH: amd64, PYVER: 3.11.2 }
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v2    
