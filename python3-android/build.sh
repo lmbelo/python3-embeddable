@@ -27,7 +27,7 @@ autoreconf -ifv
 which python
 python -m pip install dataclasses
 ./Android/build_deps.py $COMMON_ARGS
-./Android/configure.py $COMMON_ARGS --prefix=/usr --disable-test-modules --with-build-python="$THIS_DIR/build" "$@"
+./Android/configure.py $COMMON_ARGS --prefix=/usr --disable-test-modules --with-build-python=$SRCDIR "$@"
 make
 make install DESTDIR="$THIS_DIR/build"
 popd

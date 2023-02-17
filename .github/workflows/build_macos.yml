@@ -1,7 +1,7 @@
 name: Build MacOS
 
 on: 
-  push:
+  #push:
 
   # Manual run
   workflow_dispatch:
@@ -67,6 +67,8 @@ jobs:
           - { PYVER: 3.9.15 }
 
           - { PYVER: 3.10.8 }
+
+          - { PYVER: 3.11.2 }
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v2
