@@ -274,11 +274,11 @@ def library_recipes():
             tk_checksum='1d6dcf6120356e3d211e056dff5e462a'
             tk_patches = [ ]
 
-
+        base_url = "https://prdownloads.sourceforge.net/tcl/{what}{version}-src.tar.gz"
         result.extend([
           dict(
               name="Tcl %s"%(tcl_tk_ver,),
-              url="https://prdownloads.sourceforge.net/tcl/tcl%s-src.tar.gz"%(tcl_tk_ver,),
+              url=base_url.format(what="tcl", version=tcl_tk_ver),
               checksum=tcl_checksum,
               buildDir="unix",
               configure_pre=[
