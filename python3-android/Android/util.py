@@ -55,9 +55,9 @@ def env_vars(target_arch_name: str, android_api_level: int) -> Dict[str, str]:
 
         # Compiler flags
         'CPPFLAGS': f'-I{SYSROOT}/usr/include',
-        'CFLAGS': '-fPIC -Wno-error=implicit-function-declaration',
-        'CXXLAGS': '-fPIC -Wno-error=implicit-function-declaration',
-        'LDFLAGS': f'-L{SYSROOT}/usr/lib -pie',
+        'CFLAGS': '-fPIC',
+        'CXXLAGS': '-fPIC',
+        'LDFLAGS': f'-L{SYSROOT}/usr/lib -pie -lm',
 
         # pkg-config settings
         'PKG_CONFIG_SYSROOT_DIR': str(SYSROOT),
