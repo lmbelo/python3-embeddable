@@ -16,6 +16,7 @@ if [ ! -d $SRCDIR ]; then
     curl -vLO https://www.python.org/ftp/python/$PYVER/Python-$PYVER.tar.xz
     # Use --no-same-owner so that files extracted are still owned by the
     # running user in a rootless container
+    ls -l
     tar --no-same-owner -xf Python-$PYVER.tar.xz
     popd
 fi
