@@ -29,6 +29,9 @@ jobs:
 
           - { ARCH: win32, PYVER: 3.11.2 }
           - { ARCH: amd64, PYVER: 3.11.2 }
+
+          - { ARCH: win32, PYVER: 3.12.0 }
+          - { ARCH: amd64, PYVER: 3.12.0 }
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v2    
