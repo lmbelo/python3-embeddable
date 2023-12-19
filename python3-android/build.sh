@@ -7,6 +7,9 @@ THIS_DIR="$PWD"
 
 PYVER=${PYVER:-3.9.0}
 SRCDIR=src/Python-$PYVER
+read version_major version_minor < <(echo $PYVER | sed -E 's/^([0-9]+)\.([0-9]+).*/\1 \2/')
+version_short=$version_major.$version_minor
+version_int=$(($version_major * 100 + $version_minor))
 
 COMMON_ARGS="--arch ${ARCH:-arm} --api ${ANDROID_API:-21}"
 
@@ -23,8 +26,17 @@ fi
 
 cp -r Android $SRCDIR
 pushd $SRCDIR
-patch -Np1 -i ./Android/unversioned-libpython.patch
-autoreconf -ifv
+
+patches="unversioned-libpython lfs"
+if [ $version_int -ge 312 ]; then
+    patches+=" bldlibrary grp"
+fi
+for name in $patches; do
+    patch -p1 -i ./Android/patches/$name.patch
+done
+
+#autoreconf -ifv
+
 which python
 python -m pip install dataclasses
 ./Android/build_deps.py $COMMON_ARGS
