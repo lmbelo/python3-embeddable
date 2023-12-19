@@ -57,7 +57,7 @@ def env_vars(target_arch_name: str, android_api_level: int) -> Dict[str, str]:
         'CPPFLAGS': f'-I{SYSROOT}/usr/include',
         'CFLAGS': '-fPIC',
         'CXXLAGS': '-fPIC',
-        'LDFLAGS': f'-L{SYSROOT}/usr/lib -pie -lm',
+        'LDFLAGS': f'-L{SYSROOT}/usr/lib -pie -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libgcc_real.a -Wl,--exclude-libs,libunwind.a -Wl,--build-id=sha1 -Wl,--no-rosegment -lm',
 
         # pkg-config settings
         'PKG_CONFIG_SYSROOT_DIR': str(SYSROOT),
