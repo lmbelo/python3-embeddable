@@ -141,6 +141,7 @@ class ZLib(Package):
 
 def build_package(pkg: Package):
     subprocess.check_call(['curl', '-fLO', pkg.source], cwd=BASE / 'deps')
+    subprocess.check_call(['ls', '-ls', pkg.source], cwd=BASE / 'deps')
     subprocess.check_call(['tar', '--no-same-owner', '-xf', 'zlib-1.2.12.tar'], cwd=BASE / 'deps')
 
     try:
