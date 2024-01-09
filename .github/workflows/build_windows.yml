@@ -56,3 +56,10 @@ jobs:
       with:
         path: python3-windows\${{ matrix.env.ARCH }}\embeddable\python3-windows-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
         if-no-files-found: error
+    - uses: BetaHuhn/do-spaces-action@v2
+        with:
+          access_key: ${{ secrets.ACCESS_KEY}}
+          secret_key: ${{ secrets.SECRET_KEY }}
+          space_name: ${{ secrets.SPACE_NAME }}
+          space_region: ${{ secrets.SPACE_REGION }}
+          source: python3-windows\${{ matrix.env.ARCH }}\embeddable\python3-windows-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
