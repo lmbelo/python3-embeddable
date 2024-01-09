@@ -60,3 +60,11 @@ jobs:
       with:
         path: python3-android/embedabble/${{ steps.create_package.outputs.package_filename }}
         if-no-files-found: error
+    - name: Publish to Digital Ocean
+      uses: BetaHuhn/do-spaces-action@v2
+      with:
+        access_key: ${{ secrets.ACCESS_KEY}}
+        secret_key: ${{ secrets.SECRET_KEY }}
+        space_name: ${{ secrets.SPACE_NAME }}
+        space_region: ${{ secrets.SPACE_REGION }}
+        source: python3-android/embedabble/${{ steps.create_package.outputs.package_filename }}
