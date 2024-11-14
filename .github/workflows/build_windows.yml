@@ -57,6 +57,7 @@ jobs:
     - name: Save build
       uses: actions/upload-artifact@v4
       with:
+        name: python3-windows\${{ matrix.env.ARCH }}\embeddable\python3-windows-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
         path: python3-windows\${{ matrix.env.ARCH }}\embeddable\python3-windows-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
         if-no-files-found: error
     - name: Publish to Digital Ocean
