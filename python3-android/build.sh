@@ -31,6 +31,11 @@ patches="unversioned-libpython lfs"
 if [ $version_int -ge 312 ]; then
     patches+=" bldlibrary grp"
 fi
+
+if [ $version_int -eq 313 ]; then
+    patches="lfs"
+fi
+
 for name in $patches; do
     patch -p1 -i ./Android/patches/$name.patch
 done
