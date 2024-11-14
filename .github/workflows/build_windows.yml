@@ -37,7 +37,7 @@ jobs:
           - { ARCH: amd64, PYVER: 3.13.0 }
     steps:
     - name: Checkout main repo
-      uses: actions/checkout@v2    
+      uses: actions/checkout@v4
     - name: Build Python
       shell: cmd
       run: |
@@ -55,7 +55,7 @@ jobs:
         cd ${{ matrix.env.ARCH }}\embeddable\                
         7z a -tzip python3-windows-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip * -r        
     - name: Save build
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         path: python3-windows\${{ matrix.env.ARCH }}\embeddable\python3-windows-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
         if-no-files-found: error
