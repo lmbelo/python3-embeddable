@@ -35,8 +35,8 @@ jobs:
           - { ARCH: arm,   API: 21, PYVER: 3.12.7 }
           - { ARCH: arm64, API: 21, PYVER: 3.12.7 }
 
-          - { ARCH: arm,   API: 23, PYVER: 3.13.0 }
-          - { ARCH: arm64, API: 23, PYVER: 3.13.0 }
+          - { ARCH: arm,   API: 21, PYVER: 3.13.0 }
+          - { ARCH: arm64, API: 21, PYVER: 3.13.0 }
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v4
